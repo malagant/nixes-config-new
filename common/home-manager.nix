@@ -101,6 +101,7 @@ let name = "Michael Johann";
       enable = true;
     };
     extraConfig = {
+      credential.helper = "store";
       init.defaultBranch = "main";
       core = { 
 	    editor = "nvim";
