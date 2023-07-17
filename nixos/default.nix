@@ -2,7 +2,7 @@
 { config, inputs, pkgs, ... }:
 
 let user = "mjohann";
-    keys = [ "" ]; in
+    keys = [ "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA8f0150mSUW2/BytRJP8zHi5/b49riZrNgmhzi5z+zImHElijv8265lLY3/0dZZaVg/LfGnnLoDZ0FWc+Hv9nH5FSZvATuYuyy/FFTVKx8Qf0MkyseBy5KkTC8gYoPqoyoBcYC1bu6NwChFpxNPE06sqizdMtGK2/3//qLiLkHiXhimnlFZNhOpL/Dk6pERlannxIbXt9AW+fkjiami4xdKCWQNA2fsI0isO/G8LY6Smp4n0ugY/Bu9x/D5eV+G7v1xUjUNOFiyRmVqluCdDDELIJk5HYUOVncNyF8ZcjQyICiswfQt6kv7cbm1agkQFYFoABFnTdr88Hkif+IH+Xww== mjohann@rails-experts.local" ]; in
 {
   imports = [
     ../common
@@ -215,15 +215,8 @@ let user = "mjohann";
   # My shell
   programs.zsh.enable = true;
 
-  # My editor runs as a daemon
-  services.emacs = {
-    enable = true;
-    package = pkgs.emacs-unstable;
-  };
-
   fonts.fonts = with pkgs; [
     dejavu_fonts
-    emacs-all-the-icons-fonts
     feather-font
     jetbrains-mono
     hack-font

@@ -17,7 +17,6 @@ with pkgs; [
   docker
   docker-compose
   du-dust
-  emacs-all-the-icons-fonts
   flyctl
   ffmpeg
   fd

@@ -34,10 +34,6 @@ let
     { path = "/Applications/Drafts.app/"; }
     { path = "/System/Applications/Home.app/"; }
     {
-      path = "${config.users.users.${user}.home}/.local/share/bin/emacs-launcher.command";
-      section = "others";
-    }
-    {
       path = "${config.users.users.${user}.home}/.local/share/";
       section = "others";
       options = "--sort name --view grid --display folder";
