@@ -14,6 +14,7 @@ with pkgs; [
   coreutils
   difftastic
   dejavu_fonts
+  devbox
   docker
   docker-compose
   du-dust

@@ -21,32 +21,24 @@ let
   # Fully declarative dock using the latest from Nix Store
   local.dock.enable = true;
   local.dock.entries = [
-    { path = "/Applications/Slack.app/"; }
+    { path = "${pkgs.slack}/Applications/Slack.app/"; }
+    { path = "${pkgs.discord}/Applications/Discord.app/"; }
     { path = "/System/Applications/Messages.app/"; }
     { path = "/System/Applications/Facetime.app/"; }
-    { path = "/Applications/Telegram.app/"; }
     { path = "${pkgs.alacritty}/Applications/Alacritty.app/"; }
-    { path = "/Applications/Discord.app/"; }
     { path = "/System/Applications/Music.app/"; }
-    { path = "/System/Applications/News.app/"; }
     { path = "/System/Applications/Photos.app/"; }
     { path = "/System/Applications/Photo Booth.app/"; }
-    { path = "/Applications/Drafts.app/"; }
     { path = "/System/Applications/Home.app/"; }
-    {
-      path = "${config.users.users.${user}.home}/.local/share/";
-      section = "others";
-      options = "--sort name --view grid --display folder";
-    }
-    {
-      path = "${config.users.users.${user}.home}/.local/share/downloads";
-      section = "others";
-      options = "--sort name --view grid --display stack";
-    }
   ];
 
   # We use Homebrew to install impure software only (Mac Apps)
   homebrew.enable = true;
+  homebrew.caskArgs = {
+    appdir = "~/Applications";
+    require_sha = false;
+  };
+
   homebrew.onActivation = {
     autoUpdate = true;
     cleanup = "zap";
@@ -61,12 +53,17 @@ let
   # $ mas search <app name>
   #
   homebrew.casks = pkgs.callPackage ./casks.nix {};
+  homebrew.brews = [
+    "mas"
+  ];
+
   homebrew.masApps = {
-    "1password" = 1333542190;
-    "drafts" = 1435957248;
-    "hidden-bar" = 1452453066;
-    "wireguard" = 1451685025;
-    "yoink" = 457622435;
+     "iStatistica Pro" = 1447778660;
+#    "1password" = 1333542190;
+#    "drafts" = 1435957248;
+#    "hidden-bar" = 1452453066;
+#    "wireguard" = 1451685025;
+#    "yoink" = 457622435;
   };
 
   # Enable home-manager to manage the XDG standard

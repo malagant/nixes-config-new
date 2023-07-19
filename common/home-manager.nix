@@ -5,7 +5,7 @@ let name = "Michael Johann";
 {
   # Shared shell configuration
   zsh.enable = true;
-  zsh.autocd = false;
+  zsh.autocd = true;
   zsh.cdpath = [ "~/.local/share/src" ];
   zsh.dirHashes = {
     code = "$HOME/.local/share/src";
@@ -87,6 +87,7 @@ let name = "Michael Johann";
 
     # Reboot into my dual boot Windows partition
     alias windows='systemctl reboot --boot-loader-entry=auto-windows'
+    eval "$(/opt/homebrew/bin/brew shellenv)"
   '';
 
   git = {
